@@ -1,0 +1,32 @@
+{
+  "name": "sword-arena",
+  "version": "1.0.0",
+  "private": true,
+  "description": "3-player online top-down sword fighting game (server-authoritative, browser client)",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev": "tsx watch --clear-screen=false server/index.ts --dev",
+    "dev:lag": "tsx watch --clear-screen=false server/index.ts --dev --lag 100 --jitter 30",
+    "build": "tsc --noEmit && node scripts/build.mjs",
+    "start": "npm run build && node dist/server.js",
+    "serve": "node dist/server.js",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@types/node": "^20.0.0",
+    "@types/ws": "^8.5.0",
+    "esbuild": "^0.25.0",
+    "eslint": "^9.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^3.0.0"
+  }
+}

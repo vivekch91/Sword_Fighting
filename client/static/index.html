@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sword Arena</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚔</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <div id="lobby" class="panel">
+    <h1>⚔ Sword Arena</h1>
+    <p class="tag">3-player free-for-all · best of 3</p>
+
+    <section id="home">
+      <label class="field">Your name
+        <input id="name" maxlength="16" autocomplete="off" placeholder="e.g. Ronin" />
+      </label>
+      <button id="create" class="primary">Create room</button>
+      <div class="or"><span>or join a friend</span></div>
+      <div class="row">
+        <input id="code" maxlength="6" autocomplete="off" placeholder="ROOM CODE" />
+        <button id="join">Join</button>
+      </div>
+    </section>
+
+    <section id="room" hidden>
+      <div class="roomcode">Room code <b id="roomCode"></b></div>
+      <button id="copyLink" class="link">Copy invite link</button>
+      <ul id="players"></ul>
+      <div class="row">
+        <button id="ready" class="primary">Ready</button>
+        <button id="leave">Leave</button>
+      </div>
+      <button id="start2" hidden>Start with 2 players (host, testing)</button>
+      <p class="hint" id="roomHint">Match starts automatically when 3 players are ready.</p>
+    </section>
+
+    <p id="error" role="alert"></p>
+
+    <details class="controls">
+      <summary>Controls</summary>
+      <table>
+        <tr><td>WASD</td><td>Move</td></tr>
+        <tr><td>Mouse</td><td>Aim</td></tr>
+        <tr><td>Left click</td><td>Light attack</td></tr>
+        <tr><td>Hold right click</td><td>Heavy attack (0.5 s wind-up)</td></tr>
+        <tr><td>Shift (hold)</td><td>Block (front, −80% dmg)</td></tr>
+        <tr><td>Space</td><td>Dodge roll (i-frames)</td></tr>
+      </table>
+    </details>
+  </div>
+
+  <div id="overlay" class="panel small" hidden>
+    <h2 id="overlayTitle"></h2>
+    <p id="overlayText"></p>
+    <div class="row">
+      <button id="rematch" class="primary">Rematch</button>
+      <button id="overlayLeave">Leave</button>
+    </div>
+  </div>
+
+  <div id="toast" hidden></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

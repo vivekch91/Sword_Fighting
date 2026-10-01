@@ -1,0 +1,14 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+# One free web service that serves the client and the WebSocket on the same port.
+services:
+  - type: web
+    name: sword-arena
+    runtime: node
+    plan: free
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: node dist/server.js
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
